@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import LibraryBookCard from "./LibraryBookCard"
 import library from "./mock-responses/library.json"
+import Navbar from './Navbar'
 
 function LibraryOverviewPage(props) {
     
@@ -21,7 +22,9 @@ function LibraryOverviewPage(props) {
     }, [query])
 
     return (
+
         <div>
+            <Navbar />
             <h1>Welcome to Our Library</h1>
 
             <div className="horizontal-menu">
