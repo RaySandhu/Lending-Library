@@ -1,20 +1,23 @@
-import SearchBar from "./SearchBar";
-import AboutPage from "./AboutPage"
+import SearchBar from "./SearchBar"
+import LibraryOverviewPage from "./LibraryOverviewPage"
 import mockGoogleVolume from "./mock-responses/mock-google-volume.json"
+import UserCorners from "./UserCorners"
+import { Link } from "react-router-dom";
 
-function App(props) {
+import './App.css'
+import Navbar from "./Navbar";
+
+export default function App(props) {
 
   return (
     <div>
-      <h1>The Lending Library</h1> <SearchBar />
-      <AboutPage />
-      
-      <p>{mockGoogleVolume.volumeInfo.title}</p>
-      
-      <h3>Ray's Corner</h3>
-      <h3>Joelle’s Corner</h3>
-    </div>
-  );
-}
+        <Navbar />
+        <p>{mockGoogleVolume.volumeInfo.title}</p>
+        <div className="sidebar" >  
+          <UserCorners />
+        </div>
+        <LibraryOverviewPage />
 
-export default App;
+    </div>
+  )
+}

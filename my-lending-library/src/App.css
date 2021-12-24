@@ -1,0 +1,48 @@
+.navbar {
+    background-color: cornflowerblue;
+}
+.title {
+    display: flex;
+    flex-direction: column;
+    order: 3;
+    text-align: center;
+}
+
+.sidebar {
+    display: flex;
+    float:"left";
+    width: "40%";
+}
+
+body {
+    width: 100%
+}
+
+.horizontal-menu {
+    display: flex;
+}
+
+.book-gallery {
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-auto-rows: auto;
+    grid-gap: 1.5rem;
+    width: 90%;
+    justify-content: center;
+}
+
+.book-card {
+    text-align: center;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    transition: 0.5s ease;
+}
+
+.book-card:hover {
+    -webkit-transform:scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 0.5s ease;
+    cursor: pointer;
+}
