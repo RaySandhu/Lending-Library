@@ -1,11 +1,31 @@
 .navbar {
-    background-color: cornflowerblue;
+    background-color: #6D071A;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 .title {
+    order: 2;
+    color: #E1C699;
+    font-family: Brush Script MT, Brush Script Std, cursive	;
+    font-size: 20px;
+}
+
+.home-icon {
+    display:flex;
+    order: 1;
+    width: 121px;
+    height: 70px;
+    color: #E1C699;    
+    padding-top: 15px;
+}
+
+.library-icon{
     display: flex;
-    flex-direction: column;
-    order: 3;
-    text-align: center;
+    width: 121px;
+    height: 70px;
+    color: #E1C699;      
+    padding-top: 15px;
 }
 
 .sidebar {
