@@ -37,5 +37,83 @@
         "checked_status": false,
         "checked_user": null,
         "checked_date": null
+    },
+    {
+        "title": "A World Without Email",
+        "author": "Cal Newport",
+        "publication_date": "2021-12-24",
+        "thumbnail": "https://books.google.com/books?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        "description": "Cal Newport tries to tell me to delete my email address.",
+        "personal_review": "Not his best work." ,
+        "personal_rating": 2,
+        "last_read": "2020-12-02",
+        "checked_status": false,
+        "checked_user": null,
+        "checked_date": null
+    },
+    {
+        "title": "So Good They Can't Ignore You",
+        "author": "Cal Newport",
+        "publication_date": "2014-09-15",
+        "thumbnail": "https://books.google.com/books?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        "description": "Cal Newport tries to tell me to be the 🐐.",
+        "personal_review": "His best work." ,
+        "personal_rating": 5,
+        "last_read": "2019-11-12",
+        "checked_status": false,
+        "checked_user": null,
+        "checked_date": null
+    },
+    {
+        "title": "Deep Work",
+        "author": "Cal Newport",
+        "publication_date": "2016-10-15",
+        "thumbnail": "https://books.google.com/books?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        "description": "Cal Newport tries to tell me to delete Facebook.",
+        "personal_review": "His second best work." ,
+        "personal_rating": 4,
+        "last_read": "2018-05-10",
+        "checked_status": false,
+        "checked_user": null,
+        "checked_date": null
+    },
+    {
+        "title": "A World Without Email",
+        "author": "Cal Newport",
+        "publication_date": "2021-12-24",
+        "thumbnail": "https://books.google.com/books?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        "description": "Cal Newport tries to tell me to delete my email address.",
+        "personal_review": "Not his best work." ,
+        "personal_rating": 2,
+        "last_read": "2020-12-02",
+        "checked_status": false,
+        "checked_user": null,
+        "checked_date": null
+    },
+    {
+        "title": "So Good They Can't Ignore You",
+        "author": "Cal Newport",
+        "publication_date": "2014-09-15",
+        "thumbnail": "https://books.google.com/books?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        "description": "Cal Newport tries to tell me to be the 🐐.",
+        "personal_review": "His best work." ,
+        "personal_rating": 5,
+        "last_read": "2019-11-12",
+        "checked_status": false,
+        "checked_user": null,
+        "checked_date": null
+    },
+    {
+        "title": "Deep Work",
+        "author": "Cal Newport",
+        "publication_date": "2016-10-15",
+        "thumbnail": "https://books.google.com/books?id=zyTCAlFPjgYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        "description": "Cal Newport tries to tell me to delete Facebook.",
+        "personal_review": "His second best work." ,
+        "personal_rating": 4,
+        "last_read": "2018-05-10",
+        "checked_status": false,
+        "checked_user": null,
+        "checked_date": null
     }
 ]
