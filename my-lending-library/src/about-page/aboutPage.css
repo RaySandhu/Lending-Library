@@ -3,7 +3,6 @@
     font-family: Brush Script MT, Brush Script Std, cursive	;
     font-size: 1.5vw;
     width: fit-content;
-
 }
 
 .home-icon {
@@ -29,23 +28,31 @@
 .about-body {
     display: flex;
     flex-direction: row;
-    background-color: rgba(225, 198, 153, 0.3);
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
 .about-writing {
-    flex-basis: auto;
+    padding-right: 10px;
 }
+
 .sidebar {
     display: flex;
-    width: 800px;
+    width: 1000px;
     flex-direction: column;
     color: #6D071A;
+    margin-left: 80px;
+    border-left: 3px solid #6D071A ;
+    padding-left: 30px;
+    padding-right: 20px;
 }
 
 .sidebar-content {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     flex-basis: auto;
+    justify-content: space-between;
 }
 
 h2 {

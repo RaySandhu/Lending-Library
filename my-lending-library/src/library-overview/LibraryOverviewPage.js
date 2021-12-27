@@ -18,12 +18,11 @@ function LibraryOverviewPage(props) {
         )
 
     useEffect(() => {
-        console.log("Query changed to " + query);
+        console.log("Query changed to " + query)
     }, [query])
 
     return (
-
-        <div style={{backgroundColor: "rgba(225, 198, 153, 0.3)"}}>
+        <div>
             <Navbar />
             <h1>Welcome to Our Library</h1>
 
