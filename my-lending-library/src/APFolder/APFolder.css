@@ -1,0 +1,56 @@
+.title {
+    color: #E1C699;
+    font-family: Brush Script MT, Brush Script Std, cursive	;
+    font-size: 1.5vw;
+    width: fit-content;
+
+}
+
+.home-icon {
+    display:flex;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: #E1C699;    
+    padding: 1.5rem;
+    margin: 1rem;
+    margin-top: 0.5rem;
+}
+
+.library-icon{
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    color: #E1C699;      
+    padding: 1.5rem;
+    margin: 1rem;
+    margin-top: 0.75rem;
+}
+
+.about-body {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(225, 198, 153, 0.3);
+}
+
+.about-writing {
+    flex-basis: auto;
+}
+.sidebar {
+    display: flex;
+    width: 800px;
+    flex-direction: column;
+    color: #6D071A;
+}
+
+.sidebar-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: auto;
+}
+
+h2 {
+  text-decoration: underline; 
+  text-align: center;
+  margin-bottom: 3rem;
+}
+/* style the underlining better */

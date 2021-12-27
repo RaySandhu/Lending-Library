@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import LibraryBookCard from "./LibraryBookCard"
-import library from "./mock-responses/library.json"
-import Navbar from './Navbar'
+import library from "../mock-responses/library.json"
+import Navbar from '../Navbar'
 
 function LibraryOverviewPage(props) {
     
@@ -10,7 +10,7 @@ function LibraryOverviewPage(props) {
     const bookCards = library
         .map(book => 
             <LibraryBookCard
-                key={book.title}
+                key={book.title} //can use ISBN numbers
                 title={book.title}
                 thumbnail={book.thumbnail}
                 rating={book.personal_rating}
@@ -23,7 +23,7 @@ function LibraryOverviewPage(props) {
 
     return (
 
-        <div>
+        <div style={{backgroundColor: "rgba(225, 198, 153, 0.3)"}}>
             <Navbar />
             <h1>Welcome to Our Library</h1>
 
@@ -34,9 +34,10 @@ function LibraryOverviewPage(props) {
                 <button>Add New</button>
 
                 <select>
-                    <option value="">Rating</option>
-                    <option value="">Date Read</option>
-                    <option value="">Author</option>
+                    <option value="">Alphabetical</option>
+                    <option value="">Alphabetical (reverse)</option>
+                    <option value="">Date last read </option>
+                    <option value="">Rating </option>                    
                 </select>
             </div>
 
