@@ -1,4 +1,6 @@
 # Lending-Library
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4bbec547-be25-4a72-aaf4-d0584c9633b7/deploy-status)](https://app.netlify.com/sites/lendinglibrarybythelads/deploys)
+
 
 A collaborative effort to create an online library for my personal collection of books at home with functions to add new books to the library, lending books via check in 
 and check out functions, track reading progresses for my partner and myself. Above all, this is an application of my new knowledge working with ReactJS and a first attempt
