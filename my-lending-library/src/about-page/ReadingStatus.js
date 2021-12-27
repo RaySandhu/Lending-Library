@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import ReadingStatusForm from "./ReadingStatusForm"
 
 function ReadingStatus(props) {
     const recommendationsParagraphs = props.recommendations.map(book => <p key={book}>{book}</p>)

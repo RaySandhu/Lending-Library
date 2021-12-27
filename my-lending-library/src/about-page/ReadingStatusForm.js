@@ -1,23 +1,15 @@
-import React, { useEffect } from "react"
-import ReadingStatus from "./ReadingStatus"
-import { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 function ReadingStatusForm(props) {
-
-    const [user, setUser] = useState(props.user)
-    const [currRead, setCurrRead] = useState("The Wind-Up Bird Chronicle")
+    
     const [nextRead, setNextRead] = useState("Blood of Elves")
     const [reccRead1, setReccRead1] = useState("Deep Work")
     const [reccRead2, setReccRead2] = useState("So Good They Can't Ignore You")
     const [reccRead3, setReccRead3] = useState("A World Without Email")
-    const [pastRead, setPastRead] = useState(20)
+    // const [pastRead, setPastRead] = useState(20)
 
     function handleSubmit() {
         setReccRead1(reccRead1.value)
-    }
-
-    function handleChange(e) {
-        setUser(e.target.value)
     }
 
     useEffect(() => {
@@ -56,7 +48,7 @@ function ReadingStatusForm(props) {
                     onChange={event => {setNextRead(event.target.value)}}
                 /><br/><br/>
 
-                <label> Did you finish {currRead}? </label><br/>
+                <label> Did you finish {props.current}? </label><br/>
                 <input 
                     type="radio"
                     id="Finished"
