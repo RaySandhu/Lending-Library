@@ -1,10 +1,21 @@
-import { Link } from "react-router-dom"
+import useModal from "../useModal"
+import { useEffect } from 'react'
+import SampleModal from "./form-modal/FormModal"
 
 function ReadingStatus(props) {
     const recommendationsParagraphs = props.recommendations.map(book => <p key={book}>{book}</p>)
 
+    const {isShowing, toggle} = useModal()
+    
+    useEffect(() => {
+        if(isShowing) {
+            console.log("Modal Showing")
+        } else console.log("Modal Hidden")
+    }, [isShowing])
+
     return (
         <div>
+
             <h2>{props.user}'s Corner</h2>
             <div className="sidebar-content">
                 <div>
@@ -24,7 +35,15 @@ function ReadingStatus(props) {
                     {/* <p>{props.pastRead}</p> */}
                 </div>
 
-                <Link to="/statusSubmitForm" className="update-button" user="Ray">Update {props.user}'s Status</Link>
+                <SampleModal 
+                    key={props.user}
+                    user={props.user}
+                    current = {props.current}
+                    next = {props.next}
+                    isShowing={isShowing}
+                    hide={toggle}
+                />
+                <button className="update-button" onClick={toggle}>Update {props.user}'s Status</button>
             </div>
         </div>
     )

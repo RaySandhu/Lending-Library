@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 
-function ReadingStatusForm(props) {
-    
+function ReadingStatusForm(props) {   
+
     const [nextRead, setNextRead] = useState("Blood of Elves")
     const [reccRead1, setReccRead1] = useState("Deep Work")
     const [reccRead2, setReccRead2] = useState("So Good They Can't Ignore You")
@@ -19,7 +19,7 @@ function ReadingStatusForm(props) {
     return (
         <div>
             <form>
-                <h1>Status Update for {props.user}</h1>
+                <h2>Status Update for {props.user}</h2>
                 <label> What are your top recommendations to friends and family? </label><br/>
                 <input
                     type="text"

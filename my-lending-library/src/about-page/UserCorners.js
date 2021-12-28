@@ -1,6 +1,7 @@
 import ReadingStatus from "./ReadingStatus"
 import userCornerResponse from "./../mock-responses/user-corners.json"
 
+
 function UserCorners() {
     const readingStatuses = userCornerResponse.map(userResponse =>
         <ReadingStatus
@@ -11,6 +12,7 @@ function UserCorners() {
             recommendations = {userResponse.recommendations}
         />
     )
+
 
     return (
         <div className="sidebar">
