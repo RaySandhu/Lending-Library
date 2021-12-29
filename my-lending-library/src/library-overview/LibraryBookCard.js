@@ -3,7 +3,7 @@ function LibaryBookCard(props) {
         <div className="book-card">
             <p>{props.title}</p>
             <img src={props.thumbnail} alt="Book thumbnail" />
-            <p>{props.rating}</p>
+            <p>{"⭐".repeat(props.rating)}</p>
         </div>
     )
 }
