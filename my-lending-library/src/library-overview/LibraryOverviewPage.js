@@ -22,7 +22,7 @@ function LibraryOverviewPage(props) {
     useEffect(() => {
         setFilteredBookCards(bookCards.filter(book => book.key.toLowerCase().includes(query.toLowerCase())));
         console.log(filteredBookCards);
-    }, [query])
+    }, [filteredBookCards, bookCards, query])
 
     return (
         <div>
