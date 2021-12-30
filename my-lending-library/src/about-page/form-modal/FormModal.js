@@ -1,6 +1,6 @@
+import "./modal.css"
 import React from "react"
 import ReactDOM from "react-dom"
-import "./modal.css"
 import ReadingStatusForm from "../ReadingStatusForm"
 
 const SampleModal = ({isShowing, hide, userInfo}) => isShowing ? ReactDOM.createPortal(
@@ -23,6 +23,6 @@ const SampleModal = ({isShowing, hide, userInfo}) => isShowing ? ReactDOM.create
             </div>
     </React.Fragment>,
     document.body
-) : null 
+) : null
 
 export default SampleModal
