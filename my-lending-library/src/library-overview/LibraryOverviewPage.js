@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import LibraryBookCard from "./LibraryBookCard"
 import Navbar from '../Navbar'
 import { getLibrary } from '../data'
 
-function LibraryOverviewPage(props) {
+function LibraryOverviewPage() {
     
     const [query, setQuery] = useState("")
 
