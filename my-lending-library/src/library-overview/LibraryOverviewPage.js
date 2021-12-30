@@ -1,28 +1,23 @@
 import { useState, useEffect } from 'react'
 import LibraryBookCard from "./LibraryBookCard"
-import library from "../mock-responses/library.json"
 import Navbar from '../Navbar'
+import { getLibrary } from '../data'
 
 function LibraryOverviewPage(props) {
     
     const [query, setQuery] = useState("")
 
-    const bookCards = library
+    let bookCards = getLibrary()
+        .filter(book => book.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
         .map(book => 
             <LibraryBookCard
-                key={book.title} //can use ISBN numbers
+                key={book.id}
+                id={book.id}
                 title={book.title}
                 thumbnail={book.thumbnail}
                 rating={book.personal_rating}
             />
         )
-
-    const [filteredBookCards, setFilteredBookCards] = useState(bookCards)
-
-    useEffect(() => {
-        setFilteredBookCards(bookCards.filter(book => book.key.toLowerCase().includes(query.toLowerCase())));
-        console.log(filteredBookCards);
-    }, [filteredBookCards, bookCards, query])
 
     return (
         <div>
@@ -44,7 +39,7 @@ function LibraryOverviewPage(props) {
             </div>
 
             <div className="book-gallery">
-                {filteredBookCards}
+                {bookCards}
             </div>
         </div>
     )
