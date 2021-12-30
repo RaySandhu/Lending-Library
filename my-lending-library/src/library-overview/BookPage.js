@@ -11,6 +11,13 @@ function BookPage(){
         <div>
             <Navbar />
             <h1>{book.title}</h1>
+            <h2>{book.author} * {book.publication_date}</h2>
+            <img src={book.thumbnail} alt="Book thumbnail" />
+            <h3>About this Book</h3>
+            <p>{book.description}</p>
+            <h3>Household Rating: {book.personal_rating}</h3>
+            <h3>Our Thoughts</h3>
+            <p>{book.personal_review}</p>
         </div>
     )
 }
