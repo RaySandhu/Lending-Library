@@ -1,5 +1,4 @@
 import useModal from "../useModal"
-import { useEffect } from 'react'
 import SampleModal from "./form-modal/FormModal"
 
 function ReadingStatus(props) {
@@ -7,12 +6,6 @@ function ReadingStatus(props) {
     const {user, current, next, recommendations} = props
     const userInfo = {user, current, next, recommendations}
     const {isShowing, toggle} = useModal()
-    
-    useEffect(() => {
-        if(isShowing) {
-            console.log("Modal Showing")
-        } else console.log("Modal Hidden")
-    }, [isShowing])
 
     return (
         <div>

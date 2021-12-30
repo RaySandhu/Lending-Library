@@ -1,73 +1,73 @@
-import React, { useState, useEffect } from "react"
+import { useState } from "react"
 
 function ReadingStatusForm(props) {   
-
     const [nextRead, setNextRead] = useState(props.userInfo.next)
     const [reccRead1, setReccRead1] = useState(props.userInfo.recommendations[0])
     const [reccRead2, setReccRead2] = useState(props.userInfo.recommendations[1])
     const [reccRead3, setReccRead3] = useState(props.userInfo.recommendations[2])
-    // const [pastRead, setPastRead] = useState(20)
-    console.log(props.userInfo)
 
-    function handleSubmit() {
-        console.log("Working Submit")
+    function handleSubmit(event) {
+        console.log("Submitted next read: " + nextRead)
+        event.preventDefault()
+        props.hideModal()
     }
-
-    useEffect(() => {
-        console.log(reccRead1)
-    }, [reccRead1])
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h2>Status Update for {props.userInfo.user}</h2>
-                <label> What are your top recommendations to friends and family? </label><br/>
-                <input
-                    type="text"
-                    id="reccRead1"
-                    defaultValue={reccRead1}
-                    onChange={event => {setReccRead1(event.target.value)}}
-                /> <br/>
-                <input
-                    type="text"
-                    id="reccRead2"
-                    defaultValue={reccRead2}
-                    onChange={event => {setReccRead2(event.target.value)}}
-                /> <br/>
-                <input
-                    type="text"
-                    id="reccRead3"
-                    defaultValue={reccRead3}
-                    onChange={event => {setReccRead3(event.target.value)}}
-                /> <br/><br/>
-
-                <label> What book are you planning on reading next? </label><br/>
-                <input
-                    type="text"
-                    id="nextRead"
-                    defaultValue={nextRead}
-                    onChange={event => {setNextRead(event.target.value)}}
-                /><br/><br/>
-
-                <label> Did you finish {props.userInfo.current}? </label><br/>
-                <input 
-                    type="radio"
-                    id="Finished"
-                    value="Yes"
-                /> Yes <br/>
-                <input
-                    type="radio"
-                    id="Unfinished"
-                    value="No"
-                /> No <br/><br/>
-                
-                
+                <label> What are your top recommendations to friends and family?
+                    <input
+                        type="text"
+                        id="reccRead1"
+                        defaultValue={reccRead1}
+                        onChange={event => {setReccRead1(event.target.value)}}
+                    />
+                    <input
+                        type="text"
+                        id="reccRead2"
+                        defaultValue={reccRead2}
+                        onChange={event => {setReccRead2(event.target.value)}}
+                    />
+                    <input
+                        type="text"
+                        id="reccRead3"
+                        defaultValue={reccRead3}
+                        onChange={event => {setReccRead3(event.target.value)}}
+                    />
+                </label>
+                <br/>
+                <br/>
+                <label> What book are you planning on reading next?
+                    <input
+                        type="text"
+                        id="nextRead"
+                        defaultValue={nextRead}
+                        onChange={event => {setNextRead(event.target.value)}}
+                    />
+                </label>
+                <br/>
+                <br/>
+                <label> Did you finish {props.userInfo.current}?
+                    <input
+                        type="radio"
+                        id="Finished"
+                        value="Yes"
+                    /> Yes
+                    <input
+                        type="radio"
+                        id="Unfinished"
+                        value="No"
+                    /> No
+                </label>
+                <br/>
+                <br/>
                 {/*conditional render further questions if No is checked
                     are you beginning your next book instead?
                     Yes - = Book tally increased
                     No - I'm still reading*/}
                 
-                <input type="submit" onSubmit={handleSubmit} /> 
+                <input type="submit" value="Submit" />
             </form>
         </div>
     )

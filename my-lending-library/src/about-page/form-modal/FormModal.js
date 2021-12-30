@@ -17,6 +17,7 @@ const SampleModal = ({isShowing, hide, userInfo}) => isShowing ? ReactDOM.create
                     <ReadingStatusForm
                         key={userInfo.user}
                         userInfo = {userInfo}
+                        hideModal = {hide}
                     />
                     
                 </div>
