@@ -17,9 +17,12 @@ function LibraryOverviewPage(props) {
             />
         )
 
+    const [filteredBookCards, setFilteredBookCards] = useState(bookCards)
+
     useEffect(() => {
-        console.log("Query changed to " + query)
-    }, [query])
+        setFilteredBookCards(bookCards.filter(book => book.key.toLowerCase().includes(query.toLowerCase())));
+        console.log(filteredBookCards);
+    }, [filteredBookCards, bookCards, query])
 
     return (
         <div>
@@ -41,7 +44,7 @@ function LibraryOverviewPage(props) {
             </div>
 
             <div className="book-gallery">
-                {bookCards}
+                {filteredBookCards}
             </div>
         </div>
     )
