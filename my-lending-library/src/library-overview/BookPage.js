@@ -15,7 +15,7 @@ function BookPage(){
             <img src={book.thumbnail} alt="Book thumbnail" />
             <h3>About this Book</h3>
             <p>{book.description}</p>
-            <h3>Household Rating: {book.personal_rating}</h3>
+            <h3>Household Rating: {"⭐".repeat(book.personal_rating)}</h3>
             <h3>Our Thoughts</h3>
             <p>{book.personal_review}</p>
         </div>
