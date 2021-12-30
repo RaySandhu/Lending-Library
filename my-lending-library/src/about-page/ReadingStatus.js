@@ -4,7 +4,8 @@ import SampleModal from "./form-modal/FormModal"
 
 function ReadingStatus(props) {
     const recommendationsParagraphs = props.recommendations.map(book => <p key={book}>{book}</p>)
-
+    const {user, current, next, recommendations} = props
+    const userInfo = {user, current, next, recommendations}
     const {isShowing, toggle} = useModal()
     
     useEffect(() => {
@@ -36,10 +37,7 @@ function ReadingStatus(props) {
                 </div>
 
                 <SampleModal 
-                    key={props.user}
-                    user={props.user}
-                    current = {props.current}
-                    next = {props.next}
+                    userInfo = {userInfo}
                     isShowing={isShowing}
                     hide={toggle}
                 />

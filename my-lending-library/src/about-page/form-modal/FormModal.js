@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 import "./modal.css"
 import ReadingStatusForm from "../ReadingStatusForm"
 
-const SampleModal = ({isShowing, hide}) => isShowing ? ReactDOM.createPortal(
+const SampleModal = ({isShowing, hide, userInfo}) => isShowing ? ReactDOM.createPortal(
     <React.Fragment>
         <div className="modal-overlay"/>
             <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
@@ -14,7 +14,10 @@ const SampleModal = ({isShowing, hide}) => isShowing ? ReactDOM.createPortal(
                     </button>
                     </div>
 
-                    <ReadingStatusForm />
+                    <ReadingStatusForm
+                        key={userInfo.user}
+                        userInfo = {userInfo}
+                    />
                     
                 </div>
             </div>
