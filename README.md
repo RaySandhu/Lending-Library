@@ -8,3 +8,15 @@ at collaborative development and its nuances. I will post updates here as this w
 
 Dec 24 
 A wire frame and function list is prepared and the team is prepared with a working knowledge of React and JS. Initial goals TBD.
+
+Dec 30
+Great beginning steps complete with clear goal setting by team. MVP standards set by listing of minimum functions necessary. 
+Ray - completed basic CSS, Navbar, component organization, status update forms, and addition of modal components.
+BNor - Bookcards, status update forms
+Satwick - Bookcards, search and sort library functions
+
+Goals moving forward:
+Refine CSS for forms and bookcards
+Complete a Book Description component
+Check in/out and Add New Book forms
+Introduce DB usage
