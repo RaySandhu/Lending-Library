@@ -9,28 +9,26 @@ export function compare_alphabetical(a, b) {
 }
 
 export function compare_chronological_date_last_read(a, b) {
-    // TODO: new Date() isn't working here, can't read ISO8601?
-    const a_date = new Date(a)
-    const b_date = new Date(b)
-    console.log(a_date, b_date)
-    if (a_date.last_read < b_date.last_read) {
+    const a_date = new Date(a.last_read)
+    const b_date = new Date(b.last_read)
+
+    if (a_date < b_date) {
         return -1
     }
-    if (a_date.last_read > b_date.last_read) {
+    if (a_date > b_date) {
         return 1
     }
     return 0
 }
 
 export function compare_reverse_chronological_date_last_read(a, b) {
-    // TODO: new Date() isn't working here, can't read ISO8601?
-    const a_date = new Date(a)
-    const b_date = new Date(b)
-    console.log(a_date, b_date)
-    if (a_date.last_read < b_date.last_read) {
+    const a_date = new Date(a.last_read)
+    const b_date = new Date(b.last_read)
+
+    if (a_date < b_date) {
         return 1
     }
-    if (a_date.last_read > b_date.last_read) {
+    if (a_date > b_date) {
         return -1
     }
     return 0
