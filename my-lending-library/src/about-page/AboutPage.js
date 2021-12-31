@@ -1,7 +1,6 @@
 import Navbar from "../Navbar"
 import UserCorners from "./UserCorners"
 import "./aboutPage.css"
-import "./form-modal/modal.css"
 
 export default function AboutPage() {
     return (
