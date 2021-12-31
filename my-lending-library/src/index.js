@@ -9,14 +9,14 @@ import LibraryOverviewPage from "./library-overview/LibraryOverviewPage"
 import BookPage from './library-overview/BookPage'
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<AboutPage />} />
-      <Route path="/library" element={<LibraryOverviewPage />} />
-      <Route path="/book/">
-        <Route path=":bookId" element={<BookPage />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>,
-  document.getElementById('root')
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<AboutPage />} />
+            <Route path="/library" element={<LibraryOverviewPage />} />
+            <Route path="/book/">
+                <Route path=":bookId" element={<BookPage />} />
+            </Route>
+        </Routes>
+    </BrowserRouter>,
+    document.getElementById('root')
 )

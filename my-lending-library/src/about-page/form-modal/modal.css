@@ -1,68 +1,68 @@
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1040;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("https://wallpaperaccess.com/full/2862101.jpg");
-  opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("https://wallpaperaccess.com/full/2862101.jpg");
+    opacity: 0.5;
 }
 
 .modal-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1050;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  outline: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
 }
 
 .modal {
-  z-index: 100;
-  background-color: blanchedalmond;
-  position: relative;
-  margin: 1.75rem auto;
-  border-radius: 3px;
-  max-width: 500px;
-  padding: 4rem;
-  padding-top: 2rem;
-  padding-bottom: 6rem;  
+    z-index: 100;
+    background-color: blanchedalmond;
+    position: relative;
+    margin: 1.75rem auto;
+    border-radius: 3px;
+    max-width: 500px;
+    padding: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 6rem;
 }
 
 .modal-header {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .form {
-  order: 1;
+    order: 1;
 }
 
 .modal-close-button {
-  order: 2;
-  font-size: 1.4rem;
-  font-weight: 700;
-  line-height: 1;
-  color: #6D071A;
-  opacity: .3;
-  cursor: pointer;
-  border:navy;
+    order: 2;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #6D071A;
+    opacity: .3;
+    cursor: pointer;
+    border:navy;
 }
 
 button {
-  font-size: .9rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 3px;
-  padding: .3rem 1rem;
-  margin-left: .5rem;
+    font-size: .9rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 3px;
+    padding: .3rem 1rem;
+    margin-left: .5rem;
 }
 
 .button-default {
-  background: #247BA0;
-  color: #fff;
+    background: #247BA0;
+    color: #fff;
 }
