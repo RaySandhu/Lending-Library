@@ -9,6 +9,7 @@ function UserCorners() {
             current = {userResponse.current}
             next = {userResponse.next}
             recommendations = {userResponse.recommendations}
+            tally = {userResponse.readingTally}
         />
     )
 

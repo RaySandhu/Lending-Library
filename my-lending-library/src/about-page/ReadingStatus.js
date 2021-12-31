@@ -3,9 +3,10 @@ import SampleModal from "./form-modal/FormModal"
 
 function ReadingStatus(props) {
     const recommendationsParagraphs = props.recommendations.map(book => <p key={book}>{book}</p>)
-    const {user, current, next, recommendations} = props
-    const userInfo = {user, current, next, recommendations}
+    const {user, current, next, recommendations, tally} = props
+    const userInfo = {user, current, next, recommendations, tally}
     const {isShowing, toggle} = useModal()
+    var year = new Date().getFullYear()
 
     return (
         <div>
@@ -25,7 +26,8 @@ function ReadingStatus(props) {
                     {recommendationsParagraphs}
                 </div>
                 <div>
-                    <h3>Books Read in 2022</h3> {/*can inclde Date func to tally year*/}
+                    <h3>Books Read in {year}</h3> 
+                    <p>{props.tally}</p>
                     {/* <p>{props.pastRead}</p> */}
                 </div>
 

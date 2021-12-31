@@ -13,13 +13,13 @@ const SampleModal = ({isShowing, hide, userInfo}) => isShowing ? ReactDOM.create
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
-
-                    <ReadingStatusForm
-                        key={userInfo.user}
-                        userInfo = {userInfo}
-                        hideModal = {hide}
-                    />
-                    
+                    <div className="form">
+                        <ReadingStatusForm
+                            key={userInfo.user}
+                            userInfo = {userInfo}
+                            hideModal = {hide}
+                        />
+                    </div>
                 </div>
             </div>
     </React.Fragment>,

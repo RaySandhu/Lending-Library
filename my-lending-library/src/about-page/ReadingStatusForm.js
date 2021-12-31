@@ -5,10 +5,18 @@ function ReadingStatusForm(props) {
     const [reccRead1, setReccRead1] = useState(props.userInfo.recommendations[0])
     const [reccRead2, setReccRead2] = useState(props.userInfo.recommendations[1])
     const [reccRead3, setReccRead3] = useState(props.userInfo.recommendations[2])
+    // const [tally, setTally] = useState(20)
+
+    // const addTally = (event) => {
+    //     if(event.target.value==="Yes") {
+    //         setTally(tally++)
+    //     }
+    // }
 
     function handleSubmit(event) {
         console.log("Submitted next read: " + nextRead)
         event.preventDefault()
+        // addTally()
         props.hideModal()
     }
 
@@ -51,12 +59,12 @@ function ReadingStatusForm(props) {
                 <label> Did you finish {props.userInfo.current}?
                     <input
                         type="radio"
-                        id="Finished"
+                        name="complete"
                         value="Yes"
                     /> Yes
                     <input
                         type="radio"
-                        id="Unfinished"
+                        name="complete"
                         value="No"
                     /> No
                 </label>
