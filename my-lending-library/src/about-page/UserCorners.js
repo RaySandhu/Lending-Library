@@ -1,9 +1,8 @@
+import { getUserCornerResponse } from "../data"
 import ReadingStatus from "./ReadingStatus"
-import userCornerResponse from "./../mock-responses/user-corners.json"
-
 
 function UserCorners() {
-    const readingStatuses = userCornerResponse.map(userResponse =>
+    const readingStatuses = getUserCornerResponse().map(userResponse =>
         <ReadingStatus
             key = {userResponse.user}
             user = {userResponse.user}
@@ -12,7 +11,6 @@ function UserCorners() {
             recommendations = {userResponse.recommendations}
         />
     )
-
 
     return (
         <div className="sidebar">

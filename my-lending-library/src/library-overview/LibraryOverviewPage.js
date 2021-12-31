@@ -1,28 +1,45 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import LibraryBookCard from "./LibraryBookCard"
-import library from "../mock-responses/library.json"
 import Navbar from '../Navbar'
+import { getLibrary } from '../data'
+import { 
+    compare_alphabetical,
+    compare_chronological_date_last_read,
+    compare_reverse_chronological_date_last_read,
+    compare_rating_low_to_high, compare_rating_high_to_low
+} from './compareFunctions.js'
 
-function LibraryOverviewPage(props) {
-    
+function LibraryOverviewPage() {
+    const [selectedSort, setSelectedSort] = useState("alphabetical")
     const [query, setQuery] = useState("")
 
-    const bookCards = library
+    const bookCards = getLibrary()
+        .filter(book => book.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
+        .sort((first, second) => {
+                if (selectedSort === "alphabetical") {
+                    return compare_alphabetical(first, second)
+                } else if (selectedSort === "chronological_date_last_read") {
+                    return compare_chronological_date_last_read(first, second)
+                } else if (selectedSort === "reverse_chronological_date_last_read") {
+                    return compare_reverse_chronological_date_last_read(first, second)
+                } else if (selectedSort === "rating_low_to_high") {
+                    return compare_rating_low_to_high(first, second)
+                } else if (selectedSort === "rating_high_to_low") {
+                    return compare_rating_high_to_low(first, second)
+                } else {
+                    return null
+                }
+            }
+        )
         .map(book => 
             <LibraryBookCard
-                key={book.title} //can use ISBN numbers
+                key={book.id}
+                id={book.id}
                 title={book.title}
                 thumbnail={book.thumbnail}
                 rating={book.personal_rating}
             />
         )
-
-    const [filteredBookCards, setFilteredBookCards] = useState(bookCards)
-
-    useEffect(() => {
-        setFilteredBookCards(bookCards.filter(book => book.key.toLowerCase().includes(query.toLowerCase())));
-        console.log(filteredBookCards);
-    }, [filteredBookCards, bookCards, query])
 
     return (
         <div>
@@ -35,16 +52,17 @@ function LibraryOverviewPage(props) {
 
                 <button>Add New</button>
 
-                <select>
-                    <option value="">Alphabetical</option>
-                    <option value="">Alphabetical (reverse)</option>
-                    <option value="">Date last read </option>
-                    <option value="">Rating </option>                    
+                <select value={selectedSort} onChange={event => setSelectedSort(event.target.value)}>
+                    <option value="alphabetical">Alphabetical</option>
+                    <option value="chronological_date_last_read">Date last read</option>
+                    <option value="reverse_chronological_date_last_read">Date last read (reverse)</option>
+                    <option value="rating_low_to_high">Rating (low to high)</option>            
+                    <option value="rating_high_to_low">Rating (high to low)</option>
                 </select>
             </div>
 
             <div className="book-gallery">
-                {filteredBookCards}
+                {bookCards}
             </div>
         </div>
     )
