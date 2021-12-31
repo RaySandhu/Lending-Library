@@ -7,7 +7,6 @@ function ReadingStatusForm(props) {
     const [reccRead2, setReccRead2] = useState(props.userInfo.recommendations[1])
     const [reccRead3, setReccRead3] = useState(props.userInfo.recommendations[2])
     // const [pastRead, setPastRead] = useState(20)
-    console.log(props.userInfo)
 
     function handleSubmit() {
         console.log("Working Submit")
