@@ -80,6 +80,7 @@ body {
 }
 
 .update-button {
+  -ms-flex-align: center;
   background: #6D071A;
   border: 1px solid #FF4742;
   border-radius: 6px;

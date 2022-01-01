@@ -75,7 +75,7 @@ function ReadingStatusForm(props) {
                     Yes - = Book tally increased
                     No - I'm still reading*/}
                 
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" className="update-button"/>
             </form>
         </div>
     )
