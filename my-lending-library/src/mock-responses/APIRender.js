@@ -4,7 +4,6 @@ function APIRender() {
     const [library, setLibrary] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
     const [error, setError] = useState("")
-    const key = "AIzaSyAzjMlGdwgvdcb-AalwqmZBJ4x8FfM_B_8"
 
     useEffect(() => {
         fetch("https://www.googleapis.com/books/v1")
