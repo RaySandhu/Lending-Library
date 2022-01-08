@@ -1,9 +1,17 @@
+import { useEffect } from "react"
 import Navbar from "../Navbar"
 import UserCorners from "./UserCorners"
 import "./aboutPage.css"
 import BookSearch from "../BookSearch"
 
 function AboutPage() {
+    useEffect(() => {
+        fetch('/api/test')
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error))
+    })
+
     return (
         <div>
             <Navbar />
