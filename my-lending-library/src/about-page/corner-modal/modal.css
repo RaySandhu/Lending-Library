@@ -27,19 +27,26 @@
     position: relative;
     margin: 1.75rem auto;
     border-radius: 3px;
-    max-width: 500px;
-    padding: 4rem;
-    padding-top: 2rem;
-    padding-bottom: 6rem;
+    max-width: 600px;
 }
 
 .modal-header {
     display: flex;
     justify-content: flex-end;
+    height: 80px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    color: #f8f8ff;
+    background-image: url(https://media.istockphoto.com/photos/red-wood-texture-background-picture-id1047146808?k=20&m=1047146808&s=612x612&w=0&h=bdZvWyMcsN2p7tN7VIZYXqyC4djSLOWiVQ66bfTStKM=);
+    opacity: 0.75;
 }
 
 .form {
     order: 1;
+    margin: 4rem;
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    font-size: larger;
 }
 
 .modal-close-button {

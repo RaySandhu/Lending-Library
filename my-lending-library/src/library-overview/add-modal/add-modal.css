@@ -1,0 +1,99 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("https://wallpaperaccess.com/full/2862101.jpg");
+    opacity: 0.5;
+}
+
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+.modal {
+    z-index: 100;
+    background-color: blanchedalmond;
+    position: relative;
+    margin: 1.75rem auto;
+    border-radius: 3px;
+    max-width: 600px;
+    padding-bottom: 40px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: flex-end;
+    height: 80px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    color: #f8f8ff;
+    background-image: url(https://media.istockphoto.com/photos/red-wood-texture-background-picture-id1047146808?k=20&m=1047146808&s=612x612&w=0&h=bdZvWyMcsN2p7tN7VIZYXqyC4djSLOWiVQ66bfTStKM=);
+    opacity: 0.75;
+}
+
+.form {
+    order: 1;
+    margin: 4rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: larger;
+    text-align: center;
+}
+
+.book-search{
+    width: 100%;
+}
+
+.modal-close-button {
+    order: 2;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #6D071A;
+    opacity: .3;
+    cursor: pointer;
+    border:navy;
+}
+
+.add-button {
+    -ms-flex-align: center;
+    background: #6D071A;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #E1C699;
+    cursor: pointer;
+    display: inline-block;
+    align-self: flex-end;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 20px;
+    outline: 0;
+    padding: 20px 34px;
+    text-align: center;
+    text-decoration: none;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align:text-right;
+}
+
+.button-default {
+    background: #247BA0;
+    color: #fff;
+}

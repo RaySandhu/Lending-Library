@@ -9,9 +9,10 @@ const SampleModal = ({isShowing, hide, userInfo}) => isShowing ? ReactDOM.create
         <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
             <div className="modal">
                 <div className="modal-header">
-                <button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={hide}>
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <h1>Please Update Reading Info for {userInfo.user}</h1>
+                    <button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={hide}>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div className="form">
                     <ReadingStatusForm

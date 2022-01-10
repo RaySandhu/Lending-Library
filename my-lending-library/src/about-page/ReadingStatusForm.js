@@ -23,8 +23,9 @@ function ReadingStatusForm(props) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <h2>Status Update for {props.userInfo.user}</h2>
                 <label> What are your top recommendations to friends and family?
+                    <br/>
+                    <br/>
                     <input
                         type="text"
                         id="reccRead1"
@@ -47,6 +48,8 @@ function ReadingStatusForm(props) {
                 <br/>
                 <br/>
                 <label> What book are you planning on reading next?
+                    <br/>
+                    <br/>
                     <input
                         type="text"
                         id="nextRead"
@@ -56,7 +59,9 @@ function ReadingStatusForm(props) {
                 </label>
                 <br/>
                 <br/>
-                <label> Did you finish {props.userInfo.current}?
+                <label> Did you finish {props.userInfo.current}? 
+                    <br/>
+                    <br/>
                     <input
                         type="radio"
                         name="complete"

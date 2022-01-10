@@ -8,10 +8,14 @@ import {
     compare_reverse_chronological_date_last_read,
     compare_rating_low_to_high, compare_rating_high_to_low
 } from './compareFunctions.js'
+import useModal from '../useModal'
+import AddModal from './add-modal/AddModal'
 
 function LibraryOverviewPage() {
     const [selectedSort, setSelectedSort] = useState("alphabetical")
     const [query, setQuery] = useState("")
+
+    const {toggle, isShowing} = useModal()
 
     const bookCards = getLibrary()
         .filter(book => book.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
@@ -50,8 +54,6 @@ function LibraryOverviewPage() {
                 <label htmlFor="search">Search</label>
                 <input type="search" name="search" onChange={e => setQuery(e.target.value)}/>
 
-                <button>Add New</button>
-
                 <select value={selectedSort} onChange={event => setSelectedSort(event.target.value)}>
                     <option value="alphabetical">Alphabetical</option>
                     <option value="chronological_date_last_read">Date last read</option>
@@ -59,11 +61,19 @@ function LibraryOverviewPage() {
                     <option value="rating_low_to_high">Rating (low to high)</option>            
                     <option value="rating_high_to_low">Rating (high to low)</option>
                 </select>
+
+                
+                <button className='add-button' onClick={toggle}>Add New</button>
             </div>
 
             <div className="book-gallery">
                 {bookCards}
             </div>
+
+            <AddModal 
+                isShowing ={isShowing}
+                hide = {toggle}
+            />
         </div>
     )
 }

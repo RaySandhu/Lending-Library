@@ -1,5 +1,5 @@
 import useModal from "../useModal"
-import SampleModal from "./form-modal/FormModal"
+import CornerModal from "./corner-modal/CornerModal"
 
 function ReadingStatus(props) {
     const recommendationsParagraphs = props.recommendations.map(book => <p key={book}>{book}</p>)
@@ -31,7 +31,7 @@ function ReadingStatus(props) {
                     {/* <p>{props.pastRead}</p> */}
                 </div>
 
-                <SampleModal 
+                <CornerModal 
                     userInfo = {userInfo}
                     isShowing={isShowing}
                     hide={toggle}
