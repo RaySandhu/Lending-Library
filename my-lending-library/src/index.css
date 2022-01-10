@@ -8,29 +8,36 @@ body {
     background-color: rgba(225, 198, 153, 0.3);
 }
 
+.navbar {
+    background-color: #6D071A;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 24px;
+}
+
 .title {
     color: #E1C699;
     font-family: Brush Script MT, Brush Script Std, cursive;
-    font-size: 1.5vw;
-    width: fit-content;
+
 }
 
 .home-icon {
     display:flex;
-    width: 3.5rem;
-    height: 3.5rem;
     color: #E1C699;
-    padding: 1.5rem;
-    margin-top: 0.5rem;
+    height: auto;
+    font-size: 3em;
+    padding-top: 20px;
+    padding-left: 20px;
 }
 
 .library-icon{
     display: flex;
-    width: 3rem;
-    height: 3rem;
     color: #E1C699;
-    padding: 1.5rem;
-    margin-top: 0.75rem;
+    font-size: 2.5em;
+    padding-top: 25px;
+    padding-right: 20px;
+
 }
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -43,15 +50,6 @@ body {
 
 .horizontal-menu {
     display: flex;
-}
-
-.navbar {
-    background-color: #6D071A;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
 }
 
 .book-gallery {
