@@ -1,6 +1,5 @@
 
 function SearchItem(props) {
-    console.log(props.authors, props.title)
     return (
         <div className="book-card">
             <img src={props.thumbnail} alt="Search Item Thumbnail"/>

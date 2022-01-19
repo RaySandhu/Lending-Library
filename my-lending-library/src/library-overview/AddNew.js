@@ -13,7 +13,7 @@ function AddNew(props) {
 
     const searchCards = result.map(item => {
         return <SearchItem 
-            key = {item.volumeInfo.industryIdentifiers[0].identifier}
+            key = {item.id}
             thumbnail = {
                 item.volumeInfo.hasOwnProperty("imageLinks") ?
                 item.volumeInfo.imageLinks.thumbnail :
@@ -23,7 +23,8 @@ function AddNew(props) {
             author = {
                 item.volumeInfo.hasOwnProperty("authors") ?
                 item.volumeInfo.authors :
-                <h3 style={{color:"red"}}> No author available </h3>}
+                "No author available"
+            }
         />
     })
 
