@@ -1,6 +1,3 @@
-import { useState } from "react"
-
-
 function BookSearch({setResult}) {
 
     function handleNewQuery(query) {

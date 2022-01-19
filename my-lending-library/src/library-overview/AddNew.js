@@ -1,21 +1,10 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import BookSearch from "../BookSearch"
 import SearchItem from "./add-modal/SearchItem"
 
 function AddNew(props) {
     const [result, setResult] = useState([])
     const [reveal, setReveal] = useState(false)
-
-    useEffect(() => {
-        result.map(item => {
-            console.log(item.volumeInfo.industryIdentifiers[0].identifier)
-            
-            if(item.volumeInfo.hasOwnProperty("authors")) {
-                console.log(item.volumeInfo.authors)
-            } else console.log("Authors section does not exist")
-            console.log("--------------------")
-        })
-    })
 
     const revealer = () => {
          setReveal(!reveal)
