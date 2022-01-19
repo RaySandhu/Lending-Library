@@ -65,6 +65,8 @@ body {
 
 .book-card {
     background-color: white;
+    font-size: small;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     border: 2px solid #e7e7e7;
     border-radius: 4px;
