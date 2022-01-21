@@ -2,7 +2,7 @@ import {  useState } from "react"
 import BookSearch from "../BookSearch"
 import SearchItem from "./add-modal/SearchItem"
 
-function AddNew(props) {
+function AddNew() {
     const [result, setResult] = useState([])
     const [reveal, setReveal] = useState(false)
 
