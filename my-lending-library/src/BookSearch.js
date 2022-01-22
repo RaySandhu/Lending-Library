@@ -1,7 +1,11 @@
-function BookSearch({setResult}) {
+import { useState } from "react"
+
+function BookSearch({numberOfResults, setResult}) {
+
+    const [newQuery, setNewQuery] = useState("")
 
     function handleNewQuery(query) {
-        fetch(`https://www.googleapis.com/books/v1/volumes?q="${query}"&key=${process.env.REACT_APP_SECRET_API_KEY}&maxResults=3`)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q="${query}"&key=${process.env.REACT_APP_SECRET_API_KEY}&maxResults=${numberOfResults}`)
             .then(res => res.json())
             .then(res => {
                 console.log(
@@ -26,15 +30,18 @@ function BookSearch({setResult}) {
                     }])
                 }
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                setResult([])
+            })
     }
 
 
 
     return (
         <div>
-            <input type="text" defaultValue="" onChange={e => handleNewQuery(e.target.value)}/>
-            {/* <button value ="Search" onClick={returnResult} /> */}
+            <input type="text" defaultValue="" onChange={e=>{setNewQuery(e.target.value)}} /><br /> <br/>
+            <button className="add-button" type="submit" onClick={() => {handleNewQuery(newQuery)}}> Search </button> <br/><br/>
         </div>     
     )
 }

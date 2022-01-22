@@ -1,7 +1,7 @@
 import "./add-modal.css"
 import React from "react"
 import ReactDOM from "react-dom"
-import AddNew from "../AddNew"
+import AddNew from "./AddNew"
 
 const AddModal = ({isShowing, hide}) => isShowing ? ReactDOM.createPortal(
     <React.Fragment>

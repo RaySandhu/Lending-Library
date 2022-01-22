@@ -1,7 +1,8 @@
 
+
 function SearchItem(props) {
     return (
-        <div className="book-card">
+        <div className="book-card" onClick={props.revealProductInfo}>
             <img src={props.thumbnail} alt="Search Item Thumbnail"/>
             <br />
             <br />

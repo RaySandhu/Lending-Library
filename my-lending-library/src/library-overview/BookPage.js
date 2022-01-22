@@ -6,6 +6,7 @@ function BookPage(){
     let params = useParams()
 
     const book = getBook(params.bookId)
+    //explain to Ray
 
     return(
         <div>

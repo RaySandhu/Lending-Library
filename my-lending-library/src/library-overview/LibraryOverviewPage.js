@@ -9,7 +9,7 @@ import {
     compare_rating_low_to_high, compare_rating_high_to_low
 } from './compareFunctions.js'
 import useModal from '../useModal'
-import AddModal from './add-modal/AddModal'
+import AddModal from './library-modals/AddModal'
 
 function LibraryOverviewPage() {
     const [selectedSort, setSelectedSort] = useState("alphabetical")
