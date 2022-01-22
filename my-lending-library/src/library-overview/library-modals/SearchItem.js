@@ -2,7 +2,9 @@
 
 function SearchItem(props) {
     return (
-        <div className="book-card" onClick={props.revealProductInfo}>
+        <div className="book-card" onClick={ () => {console.log("clicked")} 
+        // props.revealProductInfo
+        }>
             <img src={props.thumbnail} alt="Search Item Thumbnail"/>
             <br />
             <br />
