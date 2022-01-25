@@ -24,3 +24,6 @@ Goals moving forward:
 - Complete a Book Description component
 - Check in/out and Add New Book forms
 - Introduce DB usage
+
+##Jan 25
+ One month into the project, the DB is set up but not connected for usage. The Google Books API is connected and functional for searching books outside the library. The upcoming goals are to complete modals and attached forms to add new books to the library with all desired information from the API and the user. Current learning challenges are navigating multiple modals per page as the current modals are not using the React Modal dependency. Likely going to be reworked to utilize React Modal instead of building DOM Portals for each modal. Good practice either way. Next step will be connecting the DB so the user can interact with it as required. This includes add new, delete and edit functions fro stored books. Ongoing mentorship as required from BNor and Satwick.
