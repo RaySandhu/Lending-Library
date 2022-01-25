@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import SearchResult from "./SearchResult"
 
-const SearchModal = ({isShowingBook, toggleBook}) => isShowingBook ? ReactDOM.createPortal(
+const SearchModal = ({isShowingBook, newBookId, toggleBook}) => isShowingBook ? ReactDOM.createPortal(
     <React.Fragment>
         <div className="modal-overlay"/>
         <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
@@ -14,7 +14,8 @@ const SearchModal = ({isShowingBook, toggleBook}) => isShowingBook ? ReactDOM.cr
                     </button>
                 </div>
                 <div className="form">
-                    <SearchResult  
+                    <SearchResult
+                        newBookId={newBookId}
                         hide={toggleBook}
                     />
                 </div>

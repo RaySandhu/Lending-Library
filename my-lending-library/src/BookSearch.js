@@ -17,7 +17,6 @@ function BookSearch({numberOfResults, setResult}) {
                 if(res.totalItems !== 0) {
                     setResult(res.items)
                 } else {
-                    console.log("else working")
                     setResult([{
                         id: 1,
                         volumeInfo: {
@@ -41,7 +40,7 @@ function BookSearch({numberOfResults, setResult}) {
     return (
         <div>
             <input type="text" defaultValue="" onChange={e=>{setNewQuery(e.target.value)}} /><br /> <br/>
-            <button className="add-button" type="submit" onClick={() => {handleNewQuery(newQuery)}}> Search </button> <br/><br/>
+            <button className="add-button" type="submit" onClick={() => {handleNewQuery(newQuery)}}> Search </button>
         </div>     
     )
 }

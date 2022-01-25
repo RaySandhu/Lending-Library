@@ -1,10 +1,14 @@
 
 function SearchResult(props) {
 
+
     return(
         <div>
-            Search result form goes here
-            <button onClick={props.hide}> Close Window </button>
+            Search result form goes here<br/><br/>
+            The Book ID is: <br/>
+            {props.newBookId}
+            <br/>
+            <button onClick={props.hide}> Return to Library </button>
         </div>
     )
 }

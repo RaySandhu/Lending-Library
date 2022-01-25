@@ -1,17 +1,16 @@
 import {   useState } from "react"
 import BookSearch from "../../BookSearch"
 import SearchItem from "./SearchItem"
-import SearchModal from "./SearchModal"
-import useSearchModal from "../../useSearchModal"
 
-function AddNew() {
+function AddNew(props) {
     const [result, setResult] = useState([])
     const [numResults, setNumResults] = useState(5)
-    const {toggleBook, isShowingBook} = useSearchModal()
 
     const searchCards = result.map(item => {
         return <SearchItem 
             key = {item.id}
+            bookId = {item.id}
+            setBookId = {props.setBookId}
             thumbnail = {
                 item.volumeInfo.hasOwnProperty("imageLinks") ?
                 item.volumeInfo.imageLinks.thumbnail :
@@ -23,7 +22,9 @@ function AddNew() {
                 item.volumeInfo.authors :
                 "No author available"
             }
-            revealProductInfo = {toggleBook}
+            hideSearch={props.hide}
+            isShowingBook={props.isShowingBook}
+            toggleBook={props.toggleBook}
         />
     })
 
@@ -44,10 +45,6 @@ function AddNew() {
                 ? <div className="book-gallery"> {searchCards} </div>
                 : <h1> Nothing to show </h1>
             }
-            <SearchModal 
-                isShowingBook ={isShowingBook}
-                toggle={toggleBook}
-            />
         </div>      
     )
 }

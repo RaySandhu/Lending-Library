@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import LibraryBookCard from "./LibraryBookCard"
 import Navbar from '../Navbar'
 import { getLibrary } from '../data'
+import SearchModal from './library-modals/SearchModal'
 import { 
     compare_alphabetical,
     compare_chronological_date_last_read,
@@ -10,11 +11,17 @@ import {
 } from './compareFunctions.js'
 import useModal from '../useModal'
 import AddModal from './library-modals/AddModal'
+import useSearchModal from '../useSearchModal'
 
 function LibraryOverviewPage() {
     const [selectedSort, setSelectedSort] = useState("alphabetical")
     const [query, setQuery] = useState("")
+    const [bookId, setBookId] = useState("")
+    useEffect(()=> {
+        console.log("New book ID = " + bookId)
+    }, [bookId])
 
+    const {toggleBook, isShowingBook} = useSearchModal()
     const {toggle, isShowing} = useModal()
 
     const bookCards = getLibrary()
@@ -70,10 +77,21 @@ function LibraryOverviewPage() {
                 {bookCards}
             </div>
 
-            <AddModal 
-                isShowing ={isShowing}
-                hide = {toggle}
-            />
+            {isShowingBook ? 
+                <SearchModal 
+                    isShowingBook={isShowingBook}
+                    toggleBook={toggleBook}
+                    hideAddNew={toggle}
+                    newBookId={bookId}
+                /> :
+                <AddModal
+                    isShowing={isShowing}
+                    isShowingBook={isShowingBook}
+                    setBookId={setBookId}
+                    toggleBook={toggleBook}
+                    hide={toggle}
+                />
+            }
         </div>
     )
 }

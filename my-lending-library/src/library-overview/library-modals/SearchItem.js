@@ -1,10 +1,17 @@
-
-
 function SearchItem(props) {
+
+    
+
+
+    const showSearchItem = () => {
+        console.log(props.bookId + " as per the API")
+        props.setBookId(props.bookId)
+        props.hideSearch()
+        props.toggleBook()
+    }
+
     return (
-        <div className="book-card" onClick={ () => {console.log("clicked")} 
-        // props.revealProductInfo
-        }>
+        <div className="book-card" onClick={showSearchItem}>
             <img src={props.thumbnail} alt="Search Item Thumbnail"/>
             <br />
             <br />

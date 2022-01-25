@@ -3,7 +3,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import AddNew from "./AddNew"
 
-const AddModal = ({isShowing, hide}) => isShowing ? ReactDOM.createPortal(
+const AddModal = ({isShowing, isShowingBook, setBookId, toggleBook, hide}) => isShowing ? ReactDOM.createPortal(
     <React.Fragment>
         <div className="modal-overlay"/>
         <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
@@ -16,6 +16,9 @@ const AddModal = ({isShowing, hide}) => isShowing ? ReactDOM.createPortal(
                 </div>
                 <div className="form">
                     <AddNew  
+                        isShowingBook={isShowingBook}
+                        toggleBook={toggleBook}
+                        setBookId={setBookId}
                         hide={hide}
                     />
                 </div>
