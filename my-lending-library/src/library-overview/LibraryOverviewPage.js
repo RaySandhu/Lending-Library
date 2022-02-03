@@ -17,6 +17,7 @@ function LibraryOverviewPage() {
     const [selectedSort, setSelectedSort] = useState("alphabetical")
     const [query, setQuery] = useState("")
     const [bookId, setBookId] = useState("")
+    
     useEffect(()=> {
         console.log("New book ID = " + bookId)
     }, [bookId])

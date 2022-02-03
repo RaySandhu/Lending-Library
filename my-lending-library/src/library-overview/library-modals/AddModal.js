@@ -1,4 +1,4 @@
-import "./add-modal.css"
+import "./modal.css"
 import React from "react"
 import ReactDOM from "react-dom"
 import AddNew from "./AddNew"
@@ -7,9 +7,9 @@ const AddModal = ({isShowing, isShowingBook, setBookId, toggleBook, hide}) => is
     <React.Fragment>
         <div className="modal-overlay"/>
         <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
-            <div className="modal">
+            <div className="add-modal">
                 <div className="modal-header">
-                    <h1>Please Enter the Name of the New Book:</h1>
+                    <h1>Search for the New Book:</h1>
                     <button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={hide}>
                         <span aria-hidden="true">&times;</span>
                     </button>

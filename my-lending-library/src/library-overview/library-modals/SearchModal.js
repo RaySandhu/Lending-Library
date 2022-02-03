@@ -6,7 +6,7 @@ const SearchModal = ({isShowingBook, newBookId, toggleBook}) => isShowingBook ? 
     <React.Fragment>
         <div className="modal-overlay"/>
         <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
-            <div className="modal">
+            <div className="search-modal">
                 <div className="modal-header">
                     <h1>Please Enter the Name of the New Book:</h1>
                     <button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={toggleBook}>
