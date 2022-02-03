@@ -26,7 +26,7 @@ function SearchResult({newBookId, hide}) {
     
         }
         resultById(newBookId)
-    }, [])
+    }, [newBookId])
     console.log(description)
     let usableDescription = parse(description)
     console.log(usableDescription)
