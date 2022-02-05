@@ -3,7 +3,7 @@ function SearchItem(props) {
     const showSearchItem = () => {
         // console.log(props.bookId + " as per the API")
         props.setBookId(props.bookId)
-        props.hideSearch()
+        // props.hideSearch()
         props.toggleBook()
     }
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+// import {BsStar, BsStarHalf, BsStarFill} from "react-icons/bs"
 import parse from 'html-react-parser';
 
 function SearchResult({newBookId, hide}) {
@@ -12,8 +13,16 @@ function SearchResult({newBookId, hide}) {
         // answered:waiting for async function to complete
     const [bookInfo, setBookInfo] = useState({})
     const [description, setDescription] = useState("")
-    const [readMore, setReadMore] = useState(false)
+    const [author, setAuthor] = useState([])
+    const [finalAuthor, setFinalAuthor] = useState("")
     const [thumbnail, setThumbnail] = useState("")
+
+
+    const [readMore, setReadMore] = useState(false)
+    const [readBy, setReadBy] = useState("")
+    const [lastRead, setLastRead] = useState("")
+    const [personalReview, setPersonalReview] = useState("")
+    const [rating, setRating] = useState(0)
 
     
     useEffect(() => {
@@ -22,69 +31,136 @@ function SearchResult({newBookId, hide}) {
             let idResponse = await response.json()
             setBookInfo(idResponse.volumeInfo) 
             setThumbnail(idResponse.volumeInfo.imageLinks.thumbnail)
+            idResponse.volumeInfo.hasOwnProperty("authors") ?
+                setAuthor(idResponse.volumeInfo.authors) :
+                setAuthor("No author available")
             setDescription(idResponse.volumeInfo.description)
-    
         }
         resultById(newBookId)
     }, [newBookId])
-    console.log(description)
+
     let usableDescription = parse(description)
-    console.log(usableDescription)
     let showingDescription = ""
     let nonShowingDescription = ""
     for(var i in usableDescription) {
-        if (typeof (usableDescription[i]) !== "object") {
-            console.log(usableDescription[i].length)
+        if (typeof (usableDescription[i]) === "string") {
             if(showingDescription.length<500) {
                 showingDescription = showingDescription.concat(usableDescription[i])
-                console.log(showingDescription.length)
             }
             nonShowingDescription = nonShowingDescription.concat(usableDescription[i])
-        } 
+        }
     }
     
+    if(author.length>1) {
+        setFinalAuthor(author.splice(author.length-1, 1))
+    }
 
+    const handleSubmit = () => {
+        console.log(readBy, lastRead, rating)
+        console.log(personalReview)
+    }
+
+    const bookInfoTitle = {
+        order:1,
+        fontFamily:"Verdana",
+        fontDisplay: "block"
+    }
     const bookCoverStyle = {
+        order:2,
         float: "left",
         marginRight: 20,
         marginBottom: 20,
         height: 350,
         width: 200
     }
-    const descriptionstyle = {
-        
-    }
-    
+
+    const reviewstyle = {
+        height: 200,
+        width: 700
+    }    
 
     return(
         <div>
-            <h1 style={{fontFamily:"Verdana"}}>{bookInfo.title}</h1><br/>
-            <img src={thumbnail} alt= "Book Cover" style={bookCoverStyle}/><br/>
-            {/* <input type="text" id="api-description" name="api-desctription" maxLength="200" value={usableDescription} /><br/> <br/> */}
-            <div style={descriptionstyle}>
-                <h2>Book Description: </h2>
+            <h1 style={bookInfoTitle}>{bookInfo.title}</h1><br/>
+            <figure style={bookCoverStyle}>
+                <img src={thumbnail} alt= "Book Cover" height={300} width={175}/>
+                <figcaption> by <b>{author.join(", ")}</b> {finalAuthor !== "" && <div> and <b>{finalAuthor}</b></div>}</figcaption>
+            </figure>
+
+            <div>
+                <h2 style={{marginTop:-20, marginBottom:10, fontSize:30, paddingRight:60}}>Book Description: </h2>
                 <div>{nonShowingDescription.length>5 
                         ? <div> 
                             {readMore 
-                                ? <div> {nonShowingDescription} 
-                                        <button onClick={() => setReadMore(!readMore)}> 
+                                ? <div> 
+                                    {nonShowingDescription} <br/> 
+                                    <button onClick={() => setReadMore(!readMore)}> 
                                         {readMore && "Show Less"}
-                                        </button>
+                                    </button>
                                   </div>
-                                : <div> {showingDescription} 
-                                        <button onClick={() => setReadMore(!readMore)}> 
+                                : <div> 
+                                    {showingDescription} <br/>
+                                    <button onClick={() => setReadMore(!readMore)}> 
                                         {!readMore && "Show More"}
-                                        </button>
+                                    </button>
                                   </div>
                             }
                           </div>
                         : usableDescription
-                        // <input type="text" id="bookDescription" defaultValue={"No Description Found; Please enter your own"}></input>
                     }
                 </div>
             </div>
             <br/>
-            <button onClick={hide}> Return to Library </button>
+                    
+            <form className="form-style">
+                <label htmlFor="readby">
+                    Who has read this book?
+                    <br/>
+                    <select id="readby" onChange={(event) => {setReadBy(event.target.value)}}>
+                        <option selectedValue="Not Read Yet"> Not Read Yet</option>
+                        <option value="Ray"> Ray </option>
+                        <option value="Joe"> Joe </option>
+                        <option value="Both"> Both </option>
+                    </select>
+                </label> 
+                <br/>
+
+                <label htmlFor="lastreadon">
+                    When was this book last read? 
+                    <br/>
+                    <input type="date" id="lastreadon" onChange={event => setLastRead(event.target.value)} />
+                </label> 
+                <br/>
+
+                <label htmlFor="personalrating">
+                    What would you rate this book? <br/>                    
+                    <input 
+                        type="number" 
+                        id="personalrating" 
+                        name="personalrating" 
+                        min="0" 
+                        max="5" 
+                        step="0.5" 
+                        onChange={(event) => {
+                            setRating(event.target.value)
+                        }}
+                    />
+                </label>
+
+                <br/>
+
+            </form>
+            <br/>
+            <label htmlFor="thoughts"> Enter your thoughts on the book here: </label>
+            <textarea 
+                style={reviewstyle} 
+                id="thoughts" 
+                defaultValue="Please enter your personal review here" 
+                onChange={event => setPersonalReview(event.target.value)}
+            />
+            <br/>
+            <button type="submit" onClick={handleSubmit} > Add to Library </button>
+            <button onClick={hide}> Return to Book Search </button>
         </div>
     )
 }

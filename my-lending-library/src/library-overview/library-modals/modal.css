@@ -60,6 +60,13 @@
     text-align: center;
 }
 
+.form-style {
+    display:flex;
+    justify-content:space-between; 
+    border-top: 1px solid #6D071A;
+    padding-top: 10px;
+}
+
 .book-search{
     width: 100%;
 }

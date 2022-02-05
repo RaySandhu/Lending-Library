@@ -56,22 +56,23 @@ function LibraryOverviewPage() {
     return (
         <div>
             <Navbar />
-            <h1>Welcome to Our Library</h1>
+            <h1 className='welcome'>Welcome to Our Library</h1>
 
             <div className="horizontal-menu">
-                <label htmlFor="search">Search</label>
-                <input type="search" name="search" onChange={e => setQuery(e.target.value)}/>
+                <div style={{marginLeft: 40}}>
+                    <label htmlFor="search" style={{fontWeight:600}}>Search</label>
+                    <input type="search" name="search" style={{marginLeft:10, marginRight:10}} onChange={e => setQuery(e.target.value)}/>
 
-                <select value={selectedSort} onChange={event => setSelectedSort(event.target.value)}>
-                    <option value="alphabetical">Alphabetical</option>
-                    <option value="chronological_date_last_read">Date last read</option>
-                    <option value="reverse_chronological_date_last_read">Date last read (reverse)</option>
-                    <option value="rating_low_to_high">Rating (low to high)</option>            
-                    <option value="rating_high_to_low">Rating (high to low)</option>
-                </select>
-
+                    <select value={selectedSort} onChange={event => setSelectedSort(event.target.value)}>
+                        <option value="alphabetical">Alphabetical</option>
+                        <option value="chronological_date_last_read">Date last read</option>
+                        <option value="reverse_chronological_date_last_read">Date last read (reverse)</option>
+                        <option value="rating_low_to_high">Rating (low to high)</option>            
+                        <option value="rating_high_to_low">Rating (high to low)</option>
+                    </select>
+                </div>
                 
-                <button className='add-button' onClick={toggle}>Add New</button>
+                <button className='add-button' onClick={toggle} style={{marginRight: 50}}>Add New</button>
             </div>
 
             <div className="book-gallery">
