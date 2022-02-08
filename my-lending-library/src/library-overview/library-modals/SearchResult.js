@@ -37,7 +37,7 @@ function SearchResult({newBookId, hide}) {
             setDescription(idResponse.volumeInfo.description)
         }
         resultById(newBookId)
-    }, [newBookId])
+    })
 
     let usableDescription = parse(description)
     let showingDescription = ""
@@ -104,6 +104,8 @@ function SearchResult({newBookId, hide}) {
                                         {!readMore && "Show More"}
                                     </button>
                                   </div>
+                                  // can condense this button into one variable later
+                                    //also to fix displaying the button when uneccesary
                             }
                           </div>
                         : usableDescription
@@ -117,7 +119,7 @@ function SearchResult({newBookId, hide}) {
                     Who has read this book?
                     <br/>
                     <select id="readby" onChange={(event) => {setReadBy(event.target.value)}}>
-                        <option selectedValue="Not Read Yet"> Not Read Yet</option>
+                        <option selectedvalue="Not Read Yet"> Not Read Yet</option>
                         <option value="Ray"> Ray </option>
                         <option value="Joe"> Joe </option>
                         <option value="Both"> Both </option>
