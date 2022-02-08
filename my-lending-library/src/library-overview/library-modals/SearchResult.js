@@ -37,7 +37,7 @@ function SearchResult({newBookId, hide}) {
             setDescription(idResponse.volumeInfo.description)
         }
         resultById(newBookId)
-    })
+    }, [newBookId])
 
     let usableDescription = parse(description)
     let showingDescription = ""
@@ -114,7 +114,7 @@ function SearchResult({newBookId, hide}) {
             </div>
             <br/>
                     
-            <form className="form-style">
+            <form className="form-style"> 
                 <label htmlFor="readby">
                     Who has read this book?
                     <br/>
