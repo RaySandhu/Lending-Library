@@ -20,7 +20,7 @@ exports.handler = async function(event, context) {
         )
     )
 
-    let response = req.data.map(data => data.data)
+    let response = req.data.map(data => data.data.name)
 
     return {
         statusCode: 200,

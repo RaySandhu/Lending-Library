@@ -1,19 +1,37 @@
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import Navbar from "../Navbar"
 import UserCorners from "./UserCorners"
 import "./aboutPage.css"
 
 function AboutPage() {
+
+    const [data, setData] = useState("")
+    const [name, setName] = useState("")
+
+    //experimenting with netlify functions
+
+    async function addName(name) {
+        var response = await fetch('/api/add-name', {
+            body: JSON.stringify(name),
+            method: "POST"
+        })
+            .then(response => response.json()) 
+            .catch(err => console.log(err))
+        console.log(response.name)
+    }   
+
     useEffect(() => {
-        fetch('/api/test')
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error))
-    })
+        addName(data)
+    }, [data])
 
     return (
         <div>
             <Navbar />
+            {/* //experimenting with netlify functions */}
+            <textarea id="testname" onChange={event => setName(event.target.value)}/>
+            <button id="testname" value="testname" onClick={() => setData(name)}> Submit test name </button>
+
+            
             <div className="about-body">
                 <div className="about-writing">
                     <h2>About the Lending Library</h2>
@@ -42,6 +60,7 @@ function AboutPage() {
                     </p>
 
                 </div>
+                
                 <UserCorners />
             </div>
         </div>
