@@ -1,15 +1,19 @@
-// const faunadb = require('faunadb')
+//leave this component up as a lesson point for netlify functions and fetch request methods.
 
 exports.handler = async function(event, context) {
-    // let data = "I like chicken"
-    // const {name} = JSON.parse(event.body)
-    // const faunaClient = new faunadb.Client({ secret: process.env.FAUNADB_ADMIN_SECRET})
-    // const q = faunadb.query
-    console.log(event)
+
     //HOW DO YOU PASS DATA FROM WHERE THE FUNCTION IS BEING CALLED INTO THIS FUNCTION
         //issue is the event being read: maybe functions are written or placed in ways that don't allow for the correct event to be read by
             // the netlify func
         //body is empty and the path of the url suggests that the event being read is the function itself?
+    //Solved!
+        //the default request to a netlify function is a GET request and to pass data and an event body through is to use a POST request.
+        //the event.body must be a Readable Stream, thus JSON.stringify when POSTed to the backend and then parsed on receival.
+        //then it is used as an object and can be sent back as a Readable stream again, where it is converted into an object via response.json()
+    
+    const data = JSON.parse(event.body)
+    console.log(data)
+    console.log("----------------------")
 
 
     return{
@@ -20,23 +24,8 @@ exports.handler = async function(event, context) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            name: "Joelle"
+            name: data.name
         })
-    }
-
-    // let createUser = client.query(
-    //     q.Create(
-    //         q.Collection("users-test"),
-    //         {
-    //             data: {
-    //                 firstName: "Joelle",
-    //                 lastName: "Hass"
-    //             }
-    //         }
-    //     )
-    //     .then(res => console.log(res))
-    //     .catch(err => console.log(err))
-    // )   
-    
+    }    
 
 }
