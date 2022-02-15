@@ -4,11 +4,14 @@ const faunaClient = new faunadb.Client({ secret: process.env.FAUNADB_ADMIN_SECRE
 const q = faunadb.query
 
 exports.handler = async function(event, context) {
+    const data = JSON.parse(event.body)
+    console.log(data)
+
     const req = await faunaClient.query(
         q.Map(
             q.Paginate(
                 q.Match(
-                    q.Index("TestIndex")
+                    q.Index(data.user)
                 )
             ),
             q.Lambda(
@@ -20,7 +23,8 @@ exports.handler = async function(event, context) {
         )
     )
 
-    let response = req.data.map(data => data.data.name)
+    let response = req.data.map(data => data.data)
+    console.log(response)
 
     return {
         statusCode: 200,

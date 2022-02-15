@@ -1,5 +1,4 @@
 import library from "./mock-responses/library.json"
-import userCornerResponse from "./mock-responses/user-corners.json"
 
 export function getLibrary() {
     return library
@@ -9,6 +8,15 @@ export function getBook(bookId) {
     return library.filter(book => book.id === bookId)[0]
 }
 
-export function getUserCornerResponse() {
-    return userCornerResponse
+export async function getUserCornerResponse(user) {
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    let retrieve = await fetch("/api/retrievalFunctionTemplate", {
+        method: "POST",
+        body: JSON.stringify({
+                    user: user
+                })
+    })
+
+    let cornerData = await retrieve.json()
+    return cornerData
 }

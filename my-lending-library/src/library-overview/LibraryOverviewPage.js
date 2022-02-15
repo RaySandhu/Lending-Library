@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import LibraryBookCard from "./LibraryBookCard"
 import Navbar from '../Navbar'
-import { getLibrary } from '../data'
 import SearchModal from './library-modals/SearchModal'
 import { 
     compare_alphabetical,
@@ -17,15 +16,28 @@ function LibraryOverviewPage() {
     const [selectedSort, setSelectedSort] = useState("alphabetical")
     const [query, setQuery] = useState("")
     const [bookId, setBookId] = useState("")
+    const [books, setBooks] = useState([])
+
+    async function retrieveLibrary() {
+        const fetchBooks = await fetch('/api/retrieveLibrary')
+        const bookObjects = await fetchBooks.json()
+        return setBooks(bookObjects)
+    }   
     
     useEffect(()=> {
-        console.log("New book ID = " + bookId)
-    }, [bookId])
+        retrieveLibrary()
+    }, [])
+
+    useEffect(()=> {
+        console.log(books)
+    }, [books])
 
     const {toggleBook, isShowingBook} = useSearchModal()
     const {toggle, isShowing} = useModal()
 
-    const bookCards = getLibrary()
+
+
+    const bookCards = books
         .filter(book => book.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
         .sort((first, second) => {
                 if (selectedSort === "alphabetical") {

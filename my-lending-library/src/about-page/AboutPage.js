@@ -1,31 +1,12 @@
-import { useState } from "react"
 import Navbar from "../Navbar"
 import UserCorners from "./UserCorners"
 import "./aboutPage.css"
 
 function AboutPage() {
-    const [name, setName] = useState("")
-
-    //experimenting with netlify functions
-
-    async function addName(data) {
-        return fetch('/api/test-update-users', {
-            body: JSON.stringify({
-                data: data
-            }), 
-            method: "POST"
-        })
-        .then(res => res.json())
-        .then(res => console.log(res))
-
-    }   
 
     return (
         <div>
             <Navbar />
-            {/* //experimenting with netlify functions */}
-            <textarea id="testname" onChange={event => setName((event.target.value).split(" "))}/>
-            <button id="testname" value="testname" onClick={() => addName(name)}> Submit test name </button>
 
             
             <div className="about-body">

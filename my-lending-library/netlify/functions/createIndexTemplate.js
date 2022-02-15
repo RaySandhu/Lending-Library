@@ -5,16 +5,14 @@ const q = faunadb.query
 
 exports.handler = async function (event, context) {
 
-    let fullName = JSON.parse(event.body)
+    let data = JSON.parse(event.body)
+    console.log(data)
 
-    let createUser = faunaClient.query(
+    let createIndex = faunaClient.query(
         q.Create(
-            q.Collection("Test"),
+            q.Collection("Library"),
             {
-                data: {
-                    firstName: fullName.data[0],
-                    lastName: fullName.data[1]
-                }
+                data: data
             }
         )
     ).then(res => {
@@ -23,7 +21,7 @@ exports.handler = async function (event, context) {
     })
      .catch(err => console.log(err))
 
-    let sendForward = await createUser
+    let sendForward = await createIndex
 
     return {
         statusCode: 200,
