@@ -15,7 +15,7 @@ function UserCorners() {
                 return res
             })
             setUserInfo(cornerInfo)
-        }, [])
+        })
     
     console.log(userInfo[0])
     const readingStatuses = userInfo.map(userResponse =>
