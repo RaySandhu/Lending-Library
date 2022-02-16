@@ -5,7 +5,29 @@ function ReadingStatusForm(props) {
     const [reccRead1, setReccRead1] = useState(props.userInfo.recommendations[0])
     const [reccRead2, setReccRead2] = useState(props.userInfo.recommendations[1])
     const [reccRead3, setReccRead3] = useState(props.userInfo.recommendations[2])
-    // const [tally, setTally] = useState(20)
+    const [tally, setTally] = useState(20)
+
+    async function updateReadingCorner() {
+        
+        let retrieve = await fetch("/api/readingCornerUpdate", {
+            method: "POST",
+            body: JSON.stringify({
+                        "user": props.userInfo.user,
+                        "current": props.userInfo.current,
+                        "recommendations": [
+                            reccRead1,
+                            reccRead2,
+                            reccRead3
+                        ],
+                        "next": nextRead,
+                        "readingTally": tally
+                    })
+        })
+    
+        let sentUpdate = await retrieve.json()
+        console.log(sentUpdate)
+        return sentUpdate
+    }
 
     // const addTally = (event) => {
     //     if(event.target.value==="Yes") {
@@ -16,6 +38,7 @@ function ReadingStatusForm(props) {
     function handleSubmit(event) {
         console.log("Submitted next read: " + nextRead)
         event.preventDefault()
+        updateReadingCorner().then(res => res)
         // addTally()
         props.hideModal()
     }

@@ -9,8 +9,7 @@ export function getBook(bookId) {
 }
 
 export async function getUserCornerResponse(user) {
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    let retrieve = await fetch("/api/retrievalFunctionTemplate", {
+    let retrieve = await fetch("/api/readingCornerRetrieve", {
         method: "POST",
         body: JSON.stringify({
                     user: user
