@@ -8,6 +8,7 @@ function ReadingStatusForm(props) {
     const [tally, setTally] = useState(20)
 
     async function updateReadingCorner() {
+        setTally(10)
         
         let retrieve = await fetch("/api/readingCornerUpdate", {
             method: "POST",
