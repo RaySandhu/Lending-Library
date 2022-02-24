@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-// import {BsStar, BsStarHalf, BsStarFill} from "react-icons/bs"
 import parse from 'html-react-parser';
 
 function SearchResult({newBookId, hide}) {
@@ -13,6 +12,7 @@ function SearchResult({newBookId, hide}) {
         // answered:waiting for async function to complete
     const [bookInfo, setBookInfo] = useState({})
     const [description, setDescription] = useState("")
+    const [usableDescription, setUsableDescription] = useState([])
     const [author, setAuthor] = useState([])
     const [finalAuthor, setFinalAuthor] = useState("")
     const [thumbnail, setThumbnail] = useState("")
@@ -24,6 +24,27 @@ function SearchResult({newBookId, hide}) {
     const [personalReview, setPersonalReview] = useState("")
     const [rating, setRating] = useState(0)
 
+    async function addBookToLib() {
+        return fetch('/api/addToLibrary', {
+            body: JSON.stringify({
+                "id": newBookId,
+                "title": bookInfo.title,
+                "author": (author.length>1 ? finalAuthor : author),
+                "thumbnail": thumbnail,
+                "description": usableDescription,
+                "publication_date": bookInfo.publishedDate,
+                "readBy": readBy,
+                "personal_review": personalReview,
+                "personal_rating": rating,
+                "last_read": lastRead,
+                "checked_status": false
+            }), 
+            method: "POST"
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+    
+    }   
     
     useEffect(() => {
         async function resultById(newBookId) {
@@ -35,11 +56,11 @@ function SearchResult({newBookId, hide}) {
                 setAuthor(idResponse.volumeInfo.authors) :
                 setAuthor("No author available")
             setDescription(idResponse.volumeInfo.description)
+            setUsableDescription(parse(description))
         }
         resultById(newBookId)
-    }, [newBookId])
+    }, [newBookId, description])
 
-    let usableDescription = parse(description)
     let showingDescription = ""
     let nonShowingDescription = ""
     for(var i in usableDescription) {
@@ -55,7 +76,10 @@ function SearchResult({newBookId, hide}) {
         setFinalAuthor(author.splice(author.length-1, 1))
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        addBookToLib()
+        console.log(bookInfo)
         console.log(readBy, lastRead, rating)
         console.log(personalReview)
     }
