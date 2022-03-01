@@ -17,7 +17,7 @@ function SearchResult({newBookId, hide}) {
     const [thumbnail, setThumbnail] = useState("")
 
 
-    const [readMore, setReadMore] = useState(false)
+    // const [readMore, setReadMore] = useState(false)
     const [readBy, setReadBy] = useState("")
     const [lastRead, setLastRead] = useState("")
     const [personalReview, setPersonalReview] = useState("")
