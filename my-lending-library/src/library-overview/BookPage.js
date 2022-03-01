@@ -38,7 +38,6 @@ function BookPage(){
             nonShowingDescription = nonShowingDescription.concat(usableDescription[i])
         }
     }
-    console.log(book)
     return(
         <div>
             <Navbar />
@@ -66,7 +65,10 @@ function BookPage(){
                                     //also to fix displaying the button when uneccesary
                             }
                           </div>
-                        : usableDescription
+                        : <div>
+                            Description is currently unavailable due to Ray's inadequacies as a coder
+                            {/* usabledescription is unable to read because its formatted as a nested object; unlike arrays. */}
+                        </div>
                     }
             </div>
             <h3>Household Rating: {"⭐".repeat(book.personal_rating)}</h3>

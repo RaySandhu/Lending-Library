@@ -11,7 +11,6 @@ function SearchResult({newBookId, hide}) {
     // why is console log called twice on render
         // answered:waiting for async function to complete
     const [bookInfo, setBookInfo] = useState({})
-    const [description, setDescription] = useState("")
     const [usableDescription, setUsableDescription] = useState([])
     const [author, setAuthor] = useState([])
     const [finalAuthor, setFinalAuthor] = useState("")
@@ -55,11 +54,10 @@ function SearchResult({newBookId, hide}) {
             idResponse.volumeInfo.hasOwnProperty("authors") ?
                 setAuthor(idResponse.volumeInfo.authors) :
                 setAuthor("No author available")
-            setDescription(idResponse.volumeInfo.description)
-            setUsableDescription(parse(description))
+            setUsableDescription(parse(idResponse.volumeInfo.description))
         }
         resultById(newBookId)
-    }, [newBookId, description])
+    }, [newBookId])
 
     let showingDescription = ""
     let nonShowingDescription = ""
@@ -113,27 +111,33 @@ function SearchResult({newBookId, hide}) {
 
             <div>
                 <h2 style={{marginTop:-20, marginBottom:10, fontSize:30, paddingRight:60}}>Book Description: </h2>
-                <div>{nonShowingDescription.length>5 
-                        ? <div> 
-                            {readMore 
-                                ? <div> 
-                                    {nonShowingDescription} <br/> 
-                                    <button onClick={() => setReadMore(!readMore)}> 
-                                        {readMore && "Show Less"}
-                                    </button>
-                                  </div>
-                                : <div> 
-                                    {showingDescription} <br/>
-                                    <button onClick={() => setReadMore(!readMore)}> 
-                                        {!readMore && "Show More"}
-                                    </button>
-                                  </div>
-                                  // can condense this button into one variable later
-                                    //also to fix displaying the button when uneccesary
-                            }
-                          </div>
-                        : usableDescription
-                    }
+                <div>
+                    {usableDescription}
+                    {/* {
+                        nonShowingDescription.length>5 
+                            ? <div> 
+                                {readMore 
+                                    ? <div> 
+                                        {nonShowingDescription} <br/> 
+                                    </div>
+                                    : <div> 
+                                        {showingDescription} <br/>
+                                    </div>
+                                    
+                                    // can condense this button into one variable later
+                                        //also to fix displaying the button when uneccesary
+                                }
+                                {
+                                    showingDescription === nonShowingDescription ?
+                                        null :
+                                        <button onClick={() => setReadMore(!readMore)}> 
+                                                    {readMore ? "Show less" : "Show more"}
+                                        </button> 
+                                }
+                            </div>
+                            
+                            : usableDescription
+                    } */}
                 </div>
             </div>
             <br/>
