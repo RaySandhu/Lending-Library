@@ -11,3 +11,5 @@ async function frontEndTemplate(data) {
     .then(res => console.log(res))
 
 }   
+
+//then set the result to state after calling the func
