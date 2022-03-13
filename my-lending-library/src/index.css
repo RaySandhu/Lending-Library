@@ -11,6 +11,12 @@ body {
 label {
     font-weight: bolder;
 }
+
+.h3 {
+    font-weight:900;
+    font-size:1.5rem;
+}
+
 .navbar {
     background-color: #6D071A;
     display: flex;
@@ -73,13 +79,24 @@ body {
 }
 
 .book-card {
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: #664d4c;
     font-size: small;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    border: 2px solid #e7e7e7;
+    border: 6px solid #3d3b3a;
     border-radius: 4px;
+    /* height: 425px; */
+    /* overflow: auto; */
     transition: 0.5s ease;
+}
+
+.book-card-item {
+    flex-basis: auto;
+    max-height: 300px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #E1C699;
 }
 
 .book-card:hover {
@@ -88,6 +105,39 @@ body {
     transform: scale(1.1);
     transition: 0.5s ease;
     cursor: pointer;
+}
+
+.book-page-title {
+    display:flex;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #6D071A;
+    font-size: 4rem;
+    text-align: center;
+    justify-content: center;
+    padding-top: 40px;
+    font-weight: bolder;
+}
+
+.book-page-horizontal-menu {
+    display:flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 3%;
+}
+
+.book-page-info {
+    display:flex;
+    padding: 5% 5% 5% 5%;
+    justify-content: space-between;
+}
+
+.book-page-info-image {
+    flex-basis: 0;
+    width: 300px;
+    height: 500px;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .add-button {

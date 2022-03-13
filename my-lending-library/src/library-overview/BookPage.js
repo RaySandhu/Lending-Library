@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Navbar from "../Navbar"
 
+//#TODO - BIG CSS overhaul (make list of what exactly)
+
 function BookPage(){
 
     const { bookId } = useParams()
@@ -19,6 +21,7 @@ function BookPage(){
                 })
             })
             let response = await retrieve.json()
+            console.log(response)
     
             setBook(response.data)
             setAuthor(response.data.author[0])
@@ -28,11 +31,22 @@ function BookPage(){
         getBookData()
     }, [bookId])
 
+    async function deleteBook() {
+        let sendReq = await fetch("/api/deleteBook", {
+            method: "POST",
+            body: JSON.stringify({
+                id: bookId
+            })
+        })
+        console.log(sendReq)
+
+    }
+
     let showingDescription = ""
     let nonShowingDescription = ""
     for(var i in usableDescription) {
         if (typeof (usableDescription[i]) === "string") {
-            if(showingDescription.length<500) {
+            if(showingDescription.length<1000) {
                 showingDescription = showingDescription.concat(usableDescription[i])
             }
             nonShowingDescription = nonShowingDescription.concat(usableDescription[i])
@@ -41,39 +55,56 @@ function BookPage(){
     return(
         <div>
             <Navbar />
-            <h1>{book.title}</h1>
-            <h2>{author} * {book.publication_date}</h2>
-            <img src={book.thumbnail} alt="Book thumbnail" />
-            <h3>About this Book</h3>
-            <div>
-                {nonShowingDescription.length>5 
+            <title className="book-page-title">{book.title}</title>
+
+            <div className="book-page-info">                                    
+                <div style={{maxWidth:"33%"}}>
+                    <h3 style={{fontWeight:900, fontSize:"1.5rem"}}>About this Book</h3>
+                    {nonShowingDescription.length>5 
                         ? <div> 
                             {readMore 
                                 ? <div> 
                                     {nonShowingDescription}<br/> 
-                                    <button onClick={() => setReadMore(!readMore)}> 
-                                        {readMore && "Show Less"}
-                                    </button>
-                                  </div>
+                                </div>
                                 : <div> 
                                     {showingDescription}... <br/>
-                                    <button onClick={() => setReadMore(!readMore)}> 
-                                        {!readMore && "Show More"}
-                                    </button>
-                                  </div>
-                                  // can condense this button into one variable later
+                                </div>
+                                // can condense this button into one variable later
                                     //also to fix displaying the button when uneccesary
                             }
-                          </div>
+                            <br/>
+                            {
+                                showingDescription === nonShowingDescription ?
+                                    null :
+                                    <button onClick={() => setReadMore(!readMore)}> 
+                                                {readMore ? "Show less" : "Show more"}
+                                    </button> 
+                            }
+                        </div>
                         : <div>
                             Description is currently unavailable due to Ray's inadequacies as a coder
                             {/* usabledescription is unable to read because its formatted as a nested object; unlike arrays. */}
                         </div>
                     }
+                </div>
+                
+                <img className="book-page-info-image" src={book.thumbnail} alt="Book thumbnail" />
+
+                <div style={{minWidth:"33%"}}>
+                    <h3 style={{fontWeight:900, fontSize:"1.5rem"}}>Our Thoughts</h3>
+                    <p>{book.personal_review}</p>
+                </div>
             </div>
-            <h3>Household Rating: {"⭐".repeat(book.personal_rating)}</h3>
-            <h3>Our Thoughts</h3>
-            <p>{book.personal_review}</p>
+
+            <div className="book-page-horizontal-menu">
+                <h2> Authored by {author} and Published on {book.publication_date}</h2>
+                <h3 style={{paddingTop:5}}>Household Rating: {"⭐".repeat(book.personal_rating)}</h3>
+                <div style={{display:"flex", justifyContent:"space-between"}}>
+                    <button className='add-button' onClick={() => console.log("Checking this Book out")} >Check Out</button>
+                    <button className='add-button' onClick={() => console.log("Editing this Book")} >Edit Book Information</button>
+                    <button className='add-button' onClick={() => deleteBook()} >Delete Book</button>
+                </div>
+            </div>
         </div>
     )
 }
