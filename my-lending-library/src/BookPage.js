@@ -1,6 +1,8 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import Navbar from "../Navbar"
+import useModal from "./useModal"
+import Navbar from "./Navbar"
+import EditBookModal from "./EditBookModal"
 
 //#TODO - BIG CSS overhaul (make list of what exactly)
 
@@ -11,6 +13,12 @@ function BookPage(){
     const [author, setAuthor] = useState("")
     const [usableDescription, setUsableDescription] = useState("")
     const [readMore, setReadMore] = useState(false)
+
+    const { isShowing, toggle } = useModal()
+
+    useEffect(() => {
+        console.log(isShowing)
+    }, [isShowing])
 
     useEffect(() => {
         async function getBookData() {
@@ -24,7 +32,7 @@ function BookPage(){
             console.log(response)
     
             setBook(response.data)
-            setAuthor(response.data.author[0])
+            setAuthor(response.data.author)
             setUsableDescription(response.data.description)
             return
         }
@@ -39,7 +47,6 @@ function BookPage(){
             })
         })
         console.log(sendReq)
-
     }
 
     let showingDescription = ""
@@ -101,10 +108,20 @@ function BookPage(){
                 <h3 style={{paddingTop:5}}>Household Rating: {"⭐".repeat(book.personal_rating)}</h3>
                 <div style={{display:"flex", justifyContent:"space-between"}}>
                     <button className='add-button' onClick={() => console.log("Checking this Book out")} >Check Out</button>
-                    <button className='add-button' onClick={() => console.log("Editing this Book")} >Edit Book Information</button>
-                    <button className='add-button' onClick={() => deleteBook()} >Delete Book</button>
+                    <button className='add-button' onClick={() => toggle()} >Edit Book Information</button>
+                    <Link style = {{textDecoration: "none"}}to={`/library`} >
+                        <button className='add-button' onClick={() => deleteBook()} >Delete Book</button>
+                    </Link>
                 </div>
             </div>
+            <EditBookModal 
+                key = {bookId}
+                isShowing = {isShowing}
+                book = {book}
+                author = {author}
+                description = {nonShowingDescription}
+                hide = {toggle}
+            /> 
         </div>
     )
 }

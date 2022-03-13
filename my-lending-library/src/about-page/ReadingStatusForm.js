@@ -2,10 +2,11 @@ import { useState } from "react"
 
 function ReadingStatusForm(props) {   
     const [nextRead, setNextRead] = useState(props.userInfo.next)
+    const [currentRead, setCurrentRead] = useState(props.userInfo.current)
     const [reccRead1, setReccRead1] = useState(props.userInfo.recommendations[0])
     const [reccRead2, setReccRead2] = useState(props.userInfo.recommendations[1])
     const [reccRead3, setReccRead3] = useState(props.userInfo.recommendations[2])
-    const [tally, setTally] = useState(20)
+    const [tally, setTally] = useState(props.userInfo.tally)
 
     async function updateReadingCorner() {
         setTally(10)
@@ -14,13 +15,13 @@ function ReadingStatusForm(props) {
             method: "POST",
             body: JSON.stringify({
                         "user": props.userInfo.user,
-                        "current": props.userInfo.current,
                         "recommendations": [
                             reccRead1,
                             reccRead2,
                             reccRead3
                         ],
                         "next": nextRead,
+                        "current": currentRead,
                         "readingTally": tally
                     })
         })
@@ -30,17 +31,10 @@ function ReadingStatusForm(props) {
         return sentUpdate
     }
 
-    // const addTally = (event) => {
-    //     if(event.target.value==="Yes") {
-    //         setTally(tally++)
-    //     }
-    // }
-
     function handleSubmit(event) {
         console.log("Submitted next read: " + nextRead)
         event.preventDefault()
         updateReadingCorner().then(res => res)
-        // addTally()
         props.hideModal()
     }
 
@@ -83,26 +77,28 @@ function ReadingStatusForm(props) {
                 </label>
                 <br/>
                 <br/>
-                <label> Did you finish {props.userInfo.current}? 
+                <label> What book are you currently reading?
                     <br/>
                     <br/>
                     <input
-                        type="radio"
-                        name="complete"
-                        value="Yes"
-                    /> Yes
-                    <input
-                        type="radio"
-                        name="complete"
-                        value="No"
-                    /> No
+                        type="text"
+                        id="currentRead"
+                        defaultValue={currentRead}
+                        onChange={event => {setCurrentRead(event.target.value)}}
+                    />
                 </label>
                 <br/>
                 <br/>
-                {/*conditional render further questions if No is checked
-                    are you beginning your next book instead?
-                    Yes - = Book tally increased
-                    No - I'm still reading*/}
+                <label> How many books have you read this year?
+                    <br/>
+                    <br/>
+                    <input
+                        type="number"
+                        id="nextRead"
+                        defaultValue={tally}
+                        onChange={event => {setTally(event.target.value)}}
+                    />
+                </label>
                 
                 <input type="submit" value="Submit" className="update-button"/>
             </form>
