@@ -50,12 +50,14 @@ function ReadingStatusForm(props) {
                         defaultValue={reccRead1}
                         onChange={event => {setReccRead1(event.target.value)}}
                     />
+                    <br/>
                     <input
                         type="text"
                         id="reccRead2"
                         defaultValue={reccRead2}
                         onChange={event => {setReccRead2(event.target.value)}}
                     />
+                    <br/>                    
                     <input
                         type="text"
                         id="reccRead3"
@@ -91,13 +93,13 @@ function ReadingStatusForm(props) {
                 <br/>
                 <label> How many books have you read this year?
                     <br/>
-                    <br/>
                     <input
                         type="number"
                         id="nextRead"
                         defaultValue={tally}
                         onChange={event => {setTally(event.target.value)}}
                     />
+                    <br/>
                 </label>
                 
                 <input type="submit" value="Submit" className="update-button"/>

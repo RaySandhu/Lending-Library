@@ -206,3 +206,17 @@ body {
 .button-24:active {
     opacity: .5;
 }
+
+.edit-book-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px;
+    justify-content: space-evenly;
+}
+
+.edit-book-form-item {
+    display: flex;
+    flex-direction: column;
+    width: 255px;
+    height: 150px;
+}
